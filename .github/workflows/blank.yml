@@ -10,4 +10,3 @@ jobs:
         with:
           python-version: 3.8          #  <- installs python
       - uses: treebeardtech/treebeard@master   #  <- runs Treebeard
-        notebooks: "*ipynb"
