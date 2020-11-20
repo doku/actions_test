@@ -1,28 +1,16 @@
-name: Execute notebook
-
-on: [push]
-
+# .github/workflows/treebeard.yml
+# Run all notebooks on every push and weekly
+on:
+  push:
+  schedule:
+    - cron: "0 0 * * 0" # weekly
 jobs:
   run:
     runs-on: ubuntu-latest
+    name: Run treebeard
     steps:
-    - uses: actions/checkout@v1
-    - name: Set up Python
-      uses: actions/setup-python@v1
-    - uses: yaananth/run-notebook@v1
-      env:
-        RUNNER: ${{ toJson(runner) }}
-        SECRETS: ${{ toJson(secrets) }}
-        GITHUB: ${{ toJson(github) }}
-      with:
-        notebook: "test_notebook_convert.ipynb"
-        params: "PATHTOPARAMS.json"
-        isReport: False
-        poll: True
-    - uses: actions/upload-artifact@master
-      if: always()
-      with:
-        name: output
-        path: ${{ RUNNER.temp }}/nb-runner
-      env:
-        RUNNER: ${{ toJson(runner) }}
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - uses: treebeardtech/treebeard@master
