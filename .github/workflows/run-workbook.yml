@@ -22,6 +22,7 @@ jobs:
           conda list
           jupyter nbconvert --to notebook --execute test_notebook_convert.ipynb
           jupyter nbconvert --ExecutePreprocessor.kernel_name=ir --to notebook --execute 'Covid EDA.ipynb'
+          jupyter nbconvert --ExecutePreprocessor.kernel_name=ir --to notebook --execute Food_consumption_emission.ipynb
           git add .
       - name: Commit & Push changes
         uses: actions-js/push@master
