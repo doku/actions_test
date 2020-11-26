@@ -17,11 +17,8 @@ jobs:
         shell: bash -l {0}
         run: |
           conda info
-          conda list
-      - name: PowerShell Core
-        shell: pwsh
-        run: |
-          conda info
+          conda env create -f environment.yml
+          conda activate r-environment
           conda list
       - uses: treebeardtech/treebeard@master   #  <- runs Treebeard
         with:
