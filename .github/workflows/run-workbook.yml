@@ -21,6 +21,10 @@ jobs:
           conda install r-rlang=0.3.4 pandas=1.1.3 numpy=1.19.2 matplotlib=3.3.2 nbconvert=6.0.7 notebook=6.1.4 python=3.8.5 r-caret=6.0_83 r-data.table=1.12.2 r-irkernel=0.8.15 r-tidyverse=1.2.1
           conda list
           jupyter nbconvert --to html test_notebook_convert.ipynb
+      - uses: actions/upload-artifact@v2
+        with:
+          name: test_upload
+          path: test_notebook_convert.html
       - uses: treebeardtech/treebeard@master   #  <- runs Treebeard
         with:
           use-docker: false
