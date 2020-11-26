@@ -26,6 +26,7 @@ jobs:
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
       - uses: treebeardtech/treebeard@master   #  <- runs Treebeard
         with:
           use-docker: false
